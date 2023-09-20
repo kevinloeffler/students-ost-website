@@ -11,13 +11,13 @@
         <div class="menu-grid-element"></div>
         <div class="menu-grid-element"></div>
         <div class="menu-subgrid">
-            <div><a href="/static" class="menu-link">Home</a></div>
-            <div><a href="/events" class="menu-link">Events</a></div>
-            <div><a href="/vereine" class="menu-link">Vereine</a></div>
-            <div><a href="/fachschaften" class="menu-link">Fachschaften</a></div>
-            <div><a href="/starthilfe" class="menu-link">Starthilfe</a></div>
-            <div><a href="/kontakt" class="menu-link">Kontakt</a></div>
-            <div><a href="/shop" class="menu-link">Shop</a></div>
+            <div><a href="/" class="menu-link" on:click={toggleShowMenu}>Home</a></div>
+            <div><a href="/events" class="menu-link" on:click={toggleShowMenu}>Events</a></div>
+            <div><a href="/vereine" class="menu-link" on:click={toggleShowMenu}>Vereine</a></div>
+            <div><a href="/fachschaften" class="menu-link" on:click={toggleShowMenu}>Fachschaften</a></div>
+            <div><a href="/starthilfe" class="menu-link" on:click={toggleShowMenu}>Starthilfe</a></div>
+            <div><a href="/kontakt" class="menu-link" on:click={toggleShowMenu}>Kontakt</a></div>
+            <div><a href="/shop" class="menu-link" on:click={toggleShowMenu}>Shop</a></div>
         </div>
         <div class="menu-grid-element"></div>
         <div class="menu-grid-element"></div>
@@ -81,11 +81,15 @@
         background-color: white;
     }
 
+    .menu-subgrid > div {
+        margin-bottom: -4px;
+    }
+
     .menu-link {
         display: flex;
         align-items: center;
 
-        width: 97%;
+        width: calc(100% + 4px);
         height: 100%;
 
         color: white;
@@ -95,15 +99,15 @@
         font-size: min(7vw, 5vh);
         line-height: 1em;
         padding-left: 3%;
-        margin: -2px 0 0 -2px;
+        margin: -2px 0 -2px -2px;
 
         border: solid white 2px;
+        /*border-bottom: none;*/
         transition-duration: 300ms;
     }
 
     .menu-link:hover {
         transform: translate(-10px, -10px);
-
     }
 
     .close-button {
@@ -146,7 +150,6 @@
         }
 
         .menu-link {
-            width: 95%;
             padding-left: 5%;
         }
 
