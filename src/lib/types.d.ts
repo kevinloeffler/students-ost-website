@@ -1,3 +1,5 @@
+type Optional<t> = t | undefined
+
 type VereinEvent = {
     name: string,
     description: string,
@@ -30,9 +32,9 @@ type OstEvent = {
     name: string,
     date: Date,
     description: string,
-    mainImage?: any, // todo: add correct type
-    startTime?: number,
-    endTime?: number,
+    mainImage?: string
+    startTime?: string,
+    endTime?: string,
     entranceFee?: number,
     contactEmail?: string,
     contactPhone?: string,

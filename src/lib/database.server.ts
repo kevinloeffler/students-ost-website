@@ -2,6 +2,7 @@ import * as mongoose from 'mongoose'
 import bcrypt from 'bcrypt'
 import {Verein} from './models/Verein.js'
 import {User} from '$lib/models/User.js'
+import {OstEvent} from "$lib/models/OstEvent";
 
 const DB_URI: string = process.env.DB_URI || 'mongodb://127.0.0.1:27017'
 const DB_NAME: string = process.env.DB_NAME || 'students_ost_db'
@@ -19,6 +20,8 @@ async function main() {
 
 await main()
 
+/* VEREINE */
+
 export async function getAllVereine(): Promise<Verein[]> {
     const vereine: Verein[] | null | undefined = await Verein.find()
     if (!vereine) { return [] }
@@ -34,6 +37,8 @@ export async function getVerein(name: string): Promise<Verein | null> {
 export async function createVerein() {
     return await Verein.create({name: "Test Verein", description: "Dies ist ein Test Verein..."})
 }
+
+/* USERS */
 
 export async function createUser(user: User): Promise<User> {
     try {
@@ -65,6 +70,46 @@ export async function getUserByUsername(username: string): Promise<User> {
     return user
 }
 
+/* EVENTS */
+
+export async function createOstEvent(ostEvent: OstEvent): Promise<Optional<OstEvent>> {
+    try {
+        return await OstEvent.create({
+            name: ostEvent.name,
+            date: ostEvent.date,
+            description: ostEvent.description,
+            mainImage: ostEvent.mainImage,
+            startTime: ostEvent.startTime,
+            endTime: ostEvent.endTime,
+            entranceFee: ostEvent.entranceFee,
+            contactEmail: ostEvent.contactEmail,
+            contactPhone: ostEvent.contactPhone,
+            organiser: ostEvent.organiser,
+            linkName: ostEvent.linkName,
+            link: ostEvent.link,
+        })
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+export async function getAllOstEvents(): Promise<OstEvent[]> {
+    /* TODO: add start from (today) date */
+    return OstEvent.find().sort({date: 'asc'});
+}
+
+/*
+const testOstEvent: OstEvent = {
+    name: 'Test Event',
+    date: new Date(),
+    description: 'Hier kommt etwas über den Event. Wichtige Informationen usw. Das kann gut ein paar Zeilen lang sein oder sogar noch länger...',
+    startTime: '18:00',
+    endTime: '23:00',
+    linkName: 'Website',
+    link: 'https://google.com',
+}
+await createOstEvent(testOstEvent)
+*/
 // await createUser({username: 'root@email.ch', password: 'password', group: 'ROOT'})
 
 // createVerein()

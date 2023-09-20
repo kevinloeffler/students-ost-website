@@ -6,9 +6,9 @@ const OstEventSchema = new Schema<OstEvent>({
     date: {type: Date, required: true},
     description: {type: String, required: true},
     // optional properties
-    mainImage: {type: Buffer, required: false},
-    startTime: {type: Number, required: false},
-    endTime: {type: Number, required: false},
+    mainImage: {type: String, required: false},
+    startTime: {type: String, required: false},
+    endTime: {type: String, required: false},
     entranceFee: {type: Number, required: false},
     contactEmail: {type: String, required: false},
     contactPhone: {type: String, required: false},
