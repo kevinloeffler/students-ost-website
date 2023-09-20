@@ -11,7 +11,7 @@
         <div class="menu-grid-element"></div>
         <div class="menu-grid-element"></div>
         <div class="menu-subgrid">
-            <div><a href="/" class="menu-link">Home</a></div>
+            <div><a href="/static" class="menu-link">Home</a></div>
             <div><a href="/events" class="menu-link">Events</a></div>
             <div><a href="/vereine" class="menu-link">Vereine</a></div>
             <div><a href="/fachschaften" class="menu-link">Fachschaften</a></div>
