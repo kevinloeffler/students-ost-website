@@ -88,12 +88,22 @@ body {
     /*box-shadow: 10px 10px 0 -5px white, 10px 10px var(--accent-color);*/
 }
 
+.page-title {
+    font-family: "Radwave", sans-serif;
+    font-size: 40pt;
+    line-height: 1;
+}
+
 /***** MOBILE *****/
 
 @media (max-width: 600px) {
 
     .default-container {
         width: 85vw;
+    }
+
+    .page-title {
+        font-size: 28pt;
     }
 
 }
