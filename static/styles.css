@@ -21,6 +21,12 @@
 }
 
 @font-face {
+    font-family: "Inter";
+    src: url("./fonts/Inter-Bold.ttf");
+    font-weight: 700;
+}
+
+@font-face {
     font-family: "Radwave";
     src: url("./fonts/radwave-regular.woff2");
     font-weight: normal;
