@@ -12,6 +12,8 @@ type User = {
 type Verein = {
     name: string,
     description: string,
+    website?: string,
+    email?: string,
 }
 
 type AccessToken = {
