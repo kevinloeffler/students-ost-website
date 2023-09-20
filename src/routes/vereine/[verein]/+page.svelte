@@ -58,6 +58,7 @@
     .column-layout {
         display: flex;
         justify-content: space-between;
+        padding: 20px 0;
     }
 
     .header {
@@ -68,12 +69,11 @@
     }
 
     .main-column {
-        width: 80%;
-        padding: 20px 0;
+        width: 75%;
     }
 
     aside {
-        width: 18%;
+        width: 20%;
     }
 
     .logo {
@@ -96,6 +96,7 @@
 
         aside {
             width: 100%;
+            padding-top: 12px;
         }
 
     }
