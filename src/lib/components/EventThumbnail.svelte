@@ -1,23 +1,22 @@
-<div class="wrapper" class:wrapper-vertical={isVertical} data-date="{new Date(ostEvent.date).getFullYear()}">
+<a href="/events/{encodeURI(ostEvent.name)}" class="wrapper" class:wrapper-vertical={isVertical} data-date="{new Date(ostEvent.date).getFullYear()}">
 
-    <img class="thumbnail-image" src="{ostEvent.mainImage}" alt="Titelbild" use:checkIfImageIsVertical>
+    <img class="thumbnail-image" src="{ostEvent.mainImage}" alt="Titelbild" bind:naturalWidth bind:naturalHeight>
 
     <div class="content-wrapper">
         <h3>{formatDateToString(ostEvent.date)}</h3>
         <h2>{ostEvent.name}</h2>
     </div>
 
-</div>
+</a>
 
 
 <script lang="ts">
 
     export let ostEvent: OstEvent
-    let isVertical = false
 
-    function checkIfImageIsVertical(image: HTMLImageElement) {
-        isVertical = image.naturalHeight > image.naturalWidth
-    }
+    let naturalWidth: number
+    let naturalHeight: number
+    $: isVertical = naturalHeight > naturalWidth
 
     function formatDateToString(rawDate: string | Date): string {
         const date = new Date(rawDate)
@@ -30,6 +29,7 @@
 <style>
 
     .wrapper {
+        display: block;
         border: var(--default-border);
         color: var(--accent-color);
         font-family: "Radwave", sans-serif;
