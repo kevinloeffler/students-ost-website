@@ -28,9 +28,9 @@ export async function getAllVereine(): Promise<Verein[]> {
     return vereine
 }
 
-export async function getVerein(name: string): Promise<Verein | null> {
+export async function getVerein(name: string): Promise<Optional<Verein>> {
     const verein: Verein | undefined | null = await Verein.findOne({'name': name})
-    if (verein === undefined) { return null }
+    if (!verein) { return undefined }
     return verein
 }
 
@@ -97,6 +97,13 @@ export async function getAllOstEvents(): Promise<OstEvent[]> {
     /* TODO: add start from (today) date */
     return OstEvent.find().sort({date: 'asc'});
 }
+
+export async function getOstEvent(name: string): Promise<Optional<OstEvent>> {
+    const ostEvent: Optional<OstEvent> | null = await OstEvent.findOne({name: name})
+    if (!ostEvent) { return undefined }
+    return ostEvent
+}
+
 
 /*
 const testOstEvent: OstEvent = {

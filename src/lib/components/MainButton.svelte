@@ -1,10 +1,11 @@
-<a href="{link}">{content}</a>
+<a href="{link}" download="{downloadable}">{content}</a>
 
 
 <script lang="ts">
 
     export let link: string
     export let content: string
+    export let downloadable: boolean = false
 
 </script>
 
