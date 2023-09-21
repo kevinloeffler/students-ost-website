@@ -28,7 +28,7 @@
 
 <script lang="ts">
 
-    import EventThumbnail from "$lib/components/EventThumbnail.svelte";
+    import EventThumbnail from "$lib/components/event/EventThumbnail.svelte";
     import YearPicker from "./YearPicker.svelte";
     import NavBar from "$lib/components/NavBar.svelte";
     import Footer from "$lib/components/Footer.svelte";
