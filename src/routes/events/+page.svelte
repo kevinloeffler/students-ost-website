@@ -56,6 +56,8 @@
         font-size: 80px;
         color: var(--accent-color);
         text-align: center;
+        margin-bottom: 32px;
+        margin-top: 4px;
     }
 
     .wrapper {
@@ -71,6 +73,7 @@
 
         h1 {
             font-size: 44px;
+            margin-bottom: 12px;
         }
 
         .wrapper {

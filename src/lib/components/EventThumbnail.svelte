@@ -65,7 +65,7 @@
         }
 
         .wrapper-vertical > .thumbnail-image {
-            width: 70%;
+            width: 60%;
         }
 
         .wrapper-vertical > .content-wrapper {
@@ -97,6 +97,7 @@
 
         h3 {
             font-size: 24px;
+            padding-bottom: 4px;
         }
 
     }
