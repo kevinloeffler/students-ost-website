@@ -12,16 +12,13 @@
 
 <script lang="ts">
 
+    import {formatDateToString} from "$lib/util";
+
     export let ostEvent: OstEvent
 
     let naturalWidth: number
     let naturalHeight: number
     $: isVertical = naturalHeight > naturalWidth
-
-    function formatDateToString(rawDate: string | Date): string {
-        const date = new Date(rawDate)
-        return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
-    }
 
 </script>
 
