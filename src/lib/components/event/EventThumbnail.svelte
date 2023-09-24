@@ -32,6 +32,12 @@
         font-family: "Radwave", sans-serif;
         line-height: 1;
         margin-bottom: 20px;
+        transition-duration: 300ms;
+    }
+
+    .wrapper:hover {
+        transform: translate(-8px, -8px);
+        box-shadow: 8px 8px var(--accent-color);
     }
 
     .content-wrapper {
