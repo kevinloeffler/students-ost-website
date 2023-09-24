@@ -24,6 +24,13 @@
         font-weight: 700;
         color: white;
         background-color: var(--accent-color);
+
+        transition: 300ms;
+    }
+
+    a:hover {
+        transform: translate(-6px, -6px);
+        box-shadow: 6px 6px 0 -3px white, 6px 6px var(--accent-color);
     }
 
 </style>
