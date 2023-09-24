@@ -25,8 +25,7 @@
             {/if}
 
             {#if icsButtonLink}
-                <MainButton link="{icsButtonLink}" content="Zum Kalender hinzufügen" downloadable/>
-                <!-- TODO: downloaded ICS file has name 'true.ics', should be the name of the event -->
+                <MainButton link="{icsButtonLink}" content="Zum Kalender hinzufügen" file_name="{ostEvent.name}.ics" />
             {/if}
 
         </div>
