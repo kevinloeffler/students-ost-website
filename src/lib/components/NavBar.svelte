@@ -1,6 +1,8 @@
 <div class="navbar default-section">
     <div class="navbar-container default-container">
-        <img class="logo" src="/images/students-logo-blue.svg" alt="Das blaue logo der STUDENTS OST-RJ">
+        <a href="/">
+            <img class="logo" src="/images/students-logo-blue.svg" alt="Das blaue logo der STUDENTS OST-RJ">
+        </a>
         <Menu />
     </div>
 </div>
