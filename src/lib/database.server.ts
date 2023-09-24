@@ -23,7 +23,7 @@ await main()
 /* VEREINE */
 
 export async function getAllVereine(): Promise<Verein[]> {
-    const vereine: Verein[] | null | undefined = await Verein.find()
+    const vereine: Verein[] | null | undefined = await Verein.find().sort({ 'displayOrder': 'asc' })
     if (!vereine) { return [] }
     return vereine
 }

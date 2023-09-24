@@ -16,6 +16,7 @@ type Verein = {
     description: string,
     website?: string,
     email?: string,
+    displayOrder?: number,
 }
 
 type AccessToken = {
