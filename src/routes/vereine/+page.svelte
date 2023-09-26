@@ -1,5 +1,9 @@
 <NavBar />
 
+<!-- Background grid decoration -->
+<img class="background-grid grid-left" src="/images/students-vereine-grid.svg" alt="Ein hellgraues geometrisches muster">
+<img class="background-grid grid-right" src="/images/students-vereine-grid.svg" alt="Ein hellgraues geometrisches muster">
+
 <section class="default-section">
     <div class="default-container">
 
@@ -34,6 +38,10 @@
 
 <style>
 
+    .default-section {
+        min-height: 75vh;
+    }
+
     .wrapper {
         display: flex;
         justify-content: space-between;
@@ -66,6 +74,7 @@
         padding: 16px 20px;
         font-size: 18px;
         font-weight: 600;
+        background-color: white;
         border: var(--default-border);
         transition: 300ms;
     }
@@ -76,6 +85,23 @@
         text-align: center;
     }
 
+    .background-grid {
+        position: absolute;
+        z-index: -1;
+        max-height: 80vh;
+    }
+
+    .grid-left {
+        left: 0;
+        top: 20vh;
+    }
+
+    .grid-right {
+        right: 0;
+        transform: scale(-1, 1);
+        top: -35vh;
+    }
+
     @media (max-width: 600px) {
 
         .verein-wrapper {
@@ -84,6 +110,14 @@
 
         .page-title {
             font-size: 40px;
+        }
+
+        .background-grid {
+            display: none;
+        }
+
+        .default-section {
+            min-height: auto;
         }
 
     }
