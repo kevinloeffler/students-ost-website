@@ -2,7 +2,7 @@
 
 <WipWarning />
 
-<HomeHeader />
+<HomeHeader ostEvents="{data.ostEvents}"/>
 <LinksSection />
 <StudentsSection />
 <Footer />
@@ -14,4 +14,7 @@
     import HomeHeader from './HeaderSection.svelte'
     import LinksSection from './LinksSection.svelte'
     import StudentsSection from './StudentsSection.svelte'
+
+    export let data
+
 </script>
