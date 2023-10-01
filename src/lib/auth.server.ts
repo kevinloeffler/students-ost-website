@@ -41,5 +41,5 @@ export async function authenticateUserWithPassword(username: string, password: s
 
 async function getVereinFromUser(user: User): Promise<string | null> {
     // todo: implement getVereinFromUser
-    return '647de3409754f22a838cd4c2'
+    return '650a0bf138f86d2e3598f4ca'
 }

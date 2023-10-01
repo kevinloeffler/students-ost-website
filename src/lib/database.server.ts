@@ -28,9 +28,12 @@ export async function getAllVereine(): Promise<Verein[]> {
     return vereine
 }
 
-export async function getVerein(name: string): Promise<Optional<Verein>> {
-    const verein: Verein | undefined | null = await Verein.findOne({'name': name})
-    if (!verein) { return undefined }
+export async function getVerein(nameOrId: string): Promise<Optional<Verein>> {
+    let verein: Verein | undefined | null = await Verein.findOne({'name': nameOrId})
+    if (!verein) {
+        verein = await Verein.findById(nameOrId)
+        if (!verein) { return undefined }
+    }
     return verein
 }
 
@@ -96,6 +99,10 @@ export async function createOstEvent(ostEvent: OstEvent): Promise<Optional<OstEv
 export async function getAllOstEvents(): Promise<OstEvent[]> {
     /* TODO: add start from (today) date */
     return OstEvent.find().sort({date: 'asc'});
+}
+
+export async function getOstEventsByOrganiser(organiserId: string): Promise<OstEvent[]> {
+    return OstEvent.find({'organiser': organiserId}).sort({date: 'asc'})
 }
 
 export async function getOstEvent(name: string): Promise<Optional<OstEvent>> {

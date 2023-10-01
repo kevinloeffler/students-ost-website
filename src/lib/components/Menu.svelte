@@ -22,7 +22,7 @@
         <div class="menu-grid-element"></div>
         <div class="menu-grid-element"></div>
         <div class="menu-grid-element">
-            <a class="login-link" href="/login">Login Vereine</a>
+            <a class="login-link" href="/intern/dashboard">Login Vereine</a>
         </div>
         <div class="menu-grid-element"></div>
     </div>
