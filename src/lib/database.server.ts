@@ -102,7 +102,7 @@ export async function getAllOstEvents(): Promise<OstEvent[]> {
 }
 
 export async function getOstEventsByOrganiser(organiserId: string): Promise<OstEvent[]> {
-    return OstEvent.find({'organiser': organiserId}).sort({date: 'asc'})
+    return OstEvent.find({'organiserId': organiserId}).sort({date: 'asc'})
 }
 
 export async function getOstEvent(name: string): Promise<Optional<OstEvent>> {

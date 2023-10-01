@@ -13,6 +13,7 @@ const OstEventSchema = new Schema<OstEvent>({
     contactEmail: {type: String, required: false},
     contactPhone: {type: String, required: false},
     organiser: {type: String, required: false},
+    organiserId: {type: String, required: false},
     linkName: {type: String, required: false},
     link: {type: String, required: false},
 })

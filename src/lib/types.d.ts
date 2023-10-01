@@ -40,6 +40,7 @@ type OstEvent = {
     contactEmail?: string,
     contactPhone?: string,
     organiser?: string,
+    organiserId?: string,
     linkName?: string,
     link?: string,
 }
