@@ -1,0 +1,12 @@
+body {
+    color: white;
+    background-color: black;
+}
+
+a {
+    color: var(--admin-gray);
+}
+
+.dashboard-button {
+    /* todo: style button */
+}

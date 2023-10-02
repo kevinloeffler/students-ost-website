@@ -4,6 +4,7 @@
 :root {
     --accent-color: #372C6B;
     --default-border: solid 2px #372C6B;
+    --admin-gray: #878787;
 }
 
 /* TYPEFACES */
