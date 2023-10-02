@@ -8,5 +8,14 @@ a {
 }
 
 .dashboard-button {
-    /* todo: style button */
+    padding: 12px 20px;
+    font-weight: bold;
+    color: black;
+    background-color: white;
+    transition: 300ms;
+}
+
+.dashboard-button:hover {
+    transform: translate(-6px, -6px);
+    box-shadow: 6px 6px 0 -3px black, 6px 6px white;
 }
