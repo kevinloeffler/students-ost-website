@@ -1,9 +1,9 @@
 <h2>Verein</h2>
-<p>{data.dashboard.org.name}</p>
-<p>{data.dashboard.org.description}</p>
+<p>{data.organisation?.name}</p>
+<p>{data.organisation?.description}</p>
 
 <h2>Events</h2>
-{#each data.dashboard.orgEvents as ostEvent}
+{#each data.orgEvents as ostEvent}
     <p>{ostEvent.name}</p>
     <p>{ostEvent.date}</p>
 {/each}

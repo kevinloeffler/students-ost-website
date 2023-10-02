@@ -26,7 +26,7 @@ export const actions: Actions = {
             sameSite: 'strict',
             secure: false,
             path: '/',
-            maxAge: parseInt(process.env.AUTH_MAX_AGE || '') || 60 * 60 * 24
+            maxAge: parseInt(process.env.AUTH_MAX_AGE || '') || 60 * 60  // valid for 1 hour
         })
 
         const redirectTo = event.url.searchParams.get('redirectTo') || '/intern/dashboard'

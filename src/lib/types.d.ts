@@ -9,6 +9,7 @@ type User = {
     username: string,
     password: string,
     group: AccessGroup,
+    organisation?: string,
 }
 
 type Verein = {
@@ -21,7 +22,7 @@ type Verein = {
 
 type AccessToken = {
     group: AccessGroup,
-    vereinID: null | string,
+    username: string,
 }
 
 type AccessGroup =

@@ -1,7 +1,7 @@
 import type {RequestHandler} from "@sveltejs/kit";
 import {json} from "@sveltejs/kit";
 import {readJWT} from "$lib/auth.server";
-import {getOstEvent, getOstEventsByOrganiser, getVerein} from "$lib/database.server";
+import {getOstEvent, getOstEventsByOrganiser, getUserByUsername, getVerein} from "$lib/database.server";
 
 export const GET: RequestHandler = ( async ({cookies}) => {
     const jwtCookie = cookies.get('jwt')
@@ -21,8 +21,9 @@ export const GET: RequestHandler = ( async ({cookies}) => {
     }
 
     // TODO: get dashboard data
-    const organisation = await getVerein(accessToken.vereinID || '')
-    const orgEvents = await getOstEventsByOrganiser(accessToken.vereinID || '')
+    const user = await getUserByUsername(accessToken.username)
+    const organisation = await getVerein(user.organisation || '')
+    const orgEvents = await getOstEventsByOrganiser(user.organisation || '')
 
     const dashboard: DashboardData = {
         org: organisation,
@@ -34,6 +35,6 @@ export const GET: RequestHandler = ( async ({cookies}) => {
 
 
 type DashboardData = {
-    org: Verein,
+    org: Optional<Verein>,
     orgEvents: OstEvent[],
 }

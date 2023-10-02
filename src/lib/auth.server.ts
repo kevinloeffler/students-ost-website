@@ -20,11 +20,11 @@ export function readJWT(token: string): AccessToken {
         throw {name: 'INVALID TOKEN', message: 'The JWT has no valid signature', code: 30, cause: error}
     }
 
-    if (!payload.hasOwnProperty('group') || !payload.hasOwnProperty('vereinID')) {
+    if (!payload.hasOwnProperty('group') || !payload.hasOwnProperty('username')) {
         throw {name: 'INCOMPLETE TOKEN', message: 'The JWT does not have the required properties', code: 31}
     }
 
-    return {group: payload.group, vereinID: payload.vereinID}
+    return {group: payload.group, username: payload.username}
 }
 
 export async function authenticateUserWithPassword(username: string, password: string): Promise<AccessToken> {
@@ -35,11 +35,5 @@ export async function authenticateUserWithPassword(username: string, password: s
         throw {name: 'WRONG PASSWORD', message: 'wrong password for the given user', code: 21}
     }
 
-    const vereinID = await getVereinFromUser(user)
-    return {group: user.group, vereinID: vereinID}
-}
-
-async function getVereinFromUser(user: User): Promise<string | null> {
-    // todo: implement getVereinFromUser
-    return '650a0bf138f86d2e3598f4ca'
+    return {group: user.group, username: user.username}
 }

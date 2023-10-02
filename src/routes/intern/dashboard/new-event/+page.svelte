@@ -1,5 +1,5 @@
 <h2>Create a new event here...</h2>
-<p>for org: {data.dashboard.org.name}</p>
+<p>for org: {data.organisation?.name}</p>
 
 
 <script lang="ts">

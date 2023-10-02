@@ -1,4 +1,4 @@
-import type {PageLoad} from "./$types";
+import type { PageLoad } from "../../$types";
 import {redirect} from "@sveltejs/kit";
 
 export const load: PageLoad = ( async ({ fetch }) => {
@@ -9,6 +9,7 @@ export const load: PageLoad = ( async ({ fetch }) => {
     }
     const dashboard = await response.json()
     return {
-        dashboard: dashboard
+        organisation: dashboard.org,
+        orgEvents: dashboard.orgEvents,
     }
 })

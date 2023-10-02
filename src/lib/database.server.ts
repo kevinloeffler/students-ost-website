@@ -21,6 +21,7 @@ async function main() {
 await main()
 
 /* VEREINE */
+/* TODO: make VEREINE generic to include Fachschaften */
 
 export async function getAllVereine(): Promise<Verein[]> {
     const vereine: Verein[] | null | undefined = await Verein.find().sort({ 'displayOrder': 'asc' })
@@ -29,6 +30,8 @@ export async function getAllVereine(): Promise<Verein[]> {
 }
 
 export async function getVerein(nameOrId: string): Promise<Optional<Verein>> {
+    if (nameOrId === '') return undefined
+
     let verein: Verein | undefined | null = await Verein.findOne({'name': nameOrId})
     if (!verein) {
         verein = await Verein.findById(nameOrId)
@@ -41,12 +44,13 @@ export async function createVerein() {
     return await Verein.create({name: "Test Verein", description: "Dies ist ein Test Verein..."})
 }
 
+
 /* USERS */
 
 export async function createUser(user: User): Promise<User> {
     try {
         const hashedPassword = await bcrypt.hash(user.password, 10)
-        return await User.create({username: user.username, password: hashedPassword, group: user.group})
+        return await User.create({username: user.username, password: hashedPassword, group: user.group, organisation: user.organisation})
     } catch (error: any) {
         if (error.code == 11000) {
             throw {
@@ -72,6 +76,7 @@ export async function getUserByUsername(username: string): Promise<User> {
     }
     return user
 }
+
 
 /* EVENTS */
 
@@ -124,7 +129,6 @@ const testOstEvent: OstEvent = {
 }
 await createOstEvent(testOstEvent)
 */
-// await createUser({username: 'root@email.ch', password: 'password', group: 'ROOT'})
-
+// await createUser({username: 'admin@email.ch', password: 'password', group: 'ADMIN', organisation: '650a0bf138f86d2e3598f4ca'})
 // createVerein()
 // console.log('Query:', await getAllVereine())
