@@ -110,8 +110,17 @@ export async function getOstEventsByOrganiser(organiserId: string): Promise<OstE
     return OstEvent.find({'organiserId': organiserId}).sort({date: 'asc'})
 }
 
-export async function getOstEvent(name: string): Promise<Optional<OstEvent>> {
-    const ostEvent: Optional<OstEvent> | null = await OstEvent.findOne({name: name})
+export async function getOstEvent(nameOrId: string): Promise<Optional<OstEvent>> {
+    // TODO: remove ability to use name - see github issue #1
+    let ostEvent: Optional<OstEvent> | null
+
+    const isId = nameOrId.length === 24 && !!nameOrId.match(/^\d/)
+    if (isId) {
+        ostEvent = await OstEvent.findOne({_id: nameOrId})
+    } else {
+        ostEvent = await OstEvent.findOne({name: nameOrId})
+    }
+
     if (!ostEvent) { return undefined }
     return ostEvent
 }
