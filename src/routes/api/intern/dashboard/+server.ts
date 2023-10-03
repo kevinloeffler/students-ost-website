@@ -20,7 +20,6 @@ export const GET: RequestHandler = ( async ({cookies}) => {
         return new Response(JSON.stringify({'body': '401 - Unauthorized'}), {status: 401})
     }
 
-    // TODO: get dashboard data
     const user = await getUserByUsername(accessToken.username)
     const organisation = await getVerein(user.organisation || '')
     const orgEvents = await getOstEventsByOrganiser(user.organisation || '')

@@ -29,7 +29,7 @@ export const actions: Actions = {
             maxAge: parseInt(process.env.AUTH_MAX_AGE || '') || 60 * 60  // valid for 1 hour
         })
 
-        const redirectTo = event.url.searchParams.get('redirectTo') || '/intern/dashboard'
+        const redirectTo = event.url.searchParams.get('redirectTo') || '/intern/intern'
         throw redirect(303, redirectTo)
 
         // return {loggedIn: true, reason: 'valid login credentials'}
