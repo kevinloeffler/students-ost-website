@@ -14,9 +14,25 @@ a {
     background-color: white;
     border: none;
     transition: 300ms;
+    cursor: pointer;
 }
 
 .dashboard-button:hover {
     transform: translate(-6px, -6px);
     box-shadow: 6px 6px 0 -3px black, 6px 6px white;
+}
+
+.dashboard-button-secondary {
+    padding: 12px 20px;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    border: 2px solid white;
+    transition: 300ms;
+    cursor: pointer;
+}
+
+.dashboard-button-secondary:hover {
+    transform: translate(-6px, -6px);
+    box-shadow: 6px 6px white;
 }
