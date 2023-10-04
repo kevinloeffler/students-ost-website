@@ -7,21 +7,22 @@
 
     export let data
 
-    async function handleEventSave(newOstEvent: OstEvent) {
-        const completeOstEvent = newOstEvent
+    async function handleEventSave(savedEvent: {ostEvent: OstEvent, file: any}) {
+        const completeOstEvent = savedEvent.ostEvent
         completeOstEvent.organiserId = data.organisation._id
         completeOstEvent.organiser = data.organisation.name
         completeOstEvent.entranceFee = completeOstEvent.entranceFee === 0 ? undefined : completeOstEvent.entranceFee
         completeOstEvent.mainImage = ''
-        console.log('COMPLETE EVENT:', completeOstEvent)
 
-        await sendRequest(completeOstEvent)
+        await sendRequest(completeOstEvent, savedEvent.file)
     }
 
-    async function sendRequest(ostEvent: OstEvent) {
+    async function sendRequest(ostEvent: OstEvent, file: any = undefined) {
+        // TODO: check if file is undefined
+
         const request = await fetch(`/api/events`, {
             method: 'POST',
-            body: JSON.stringify(ostEvent),
+            body: JSON.stringify({ostEvent: ostEvent, file: file}),
             headers: {
                 'Content-Type': 'application/json'
             }

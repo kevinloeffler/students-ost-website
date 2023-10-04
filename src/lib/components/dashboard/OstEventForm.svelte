@@ -36,6 +36,8 @@
         <input type="tel" id="tel" bind:value="{newOstEvent.contactPhone}" placeholder="012 345 67 89">
 
         <!-- TODO: add ability to upload a main image -->
+        <label for="bild">Bild:</label>
+        <input type="file" id="bild" bind:this={fileInput} bind:value={file}>
 
     </div>
 
@@ -65,6 +67,11 @@
 
     $: showNameError = newOstEvent.name.trim().length < 3
 
+    // input file
+    let file: any
+    let fileInput: HTMLInputElement
+
+
     const newOstEvent: OstEvent = {
         _id: initialOstEvent?._id,
         name: initialOstEvent?.name || '',
@@ -73,20 +80,38 @@
         startTime: initialOstEvent?.startTime,
         endTime: initialOstEvent?.endTime,
         entranceFee: 0,
-        organiser: "",
-        contactEmail: "",
-        contactPhone: "",
-        link: "",
-        linkName: "",
-        organiserId: "",
+        organiser: initialOstEvent?.organiser,
+        organiserId: initialOstEvent?.organiserId,
+        contactEmail: initialOstEvent?.contactEmail,
+        contactPhone: initialOstEvent?.contactPhone,
+        link: initialOstEvent?.link,
+        linkName: initialOstEvent?.linkName,
         // TODO: add main image
+        mainImage: initialOstEvent?.mainImage,
     }
 
     function saveOstEvent() {
         // validate input
         if (showNameError) return
+        console.log(file)
 
-        dispatch('eventSave', newOstEvent)
+        // load file
+        if (fileInput.files && fileInput.files.length > 0) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                const arrayBuffer = new Uint8Array(reader.result)
+
+                const splitFileName = file.split('.')
+                const fileSuffix = splitFileName[splitFileName.length - 1]
+                const fileObject: FileObject = {data: arrayBuffer, suffix: fileSuffix}
+
+                dispatch('eventSave', {ostEvent: newOstEvent, file: fileObject})
+            }
+            reader.readAsArrayBuffer(fileInput.files[0])
+
+        } else {
+            dispatch('eventSave', {ostEvent: newOstEvent, file: undefined})
+        }
     }
 
     function formatDateForInput(dateString: string | Date): string {

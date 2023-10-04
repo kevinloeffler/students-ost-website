@@ -46,3 +46,9 @@ type OstEvent = {
     linkName?: string,
     link?: string,
 }
+
+type FileObject = {
+    data?: Uint8Array | {[key: string]: number},
+    fileId?: string,
+    suffix?: string,
+}

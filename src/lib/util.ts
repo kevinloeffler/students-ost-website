@@ -1,3 +1,5 @@
+import * as crypto from "crypto";
+
 export function formatDateToString(rawDate: string | Date, omitYear: boolean = false, shortYear: boolean = false, addPadding: boolean = false): string {
     const date = new Date(rawDate)
     let dateStrings: string[]
