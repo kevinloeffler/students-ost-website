@@ -4,6 +4,7 @@
 
         <label for="titel">Titel:</label>
         <input type="text" id="titel" bind:value={newOstEvent.name} placeholder="Name des Events">
+        {#if showNameError}<p class="error-msg">Titel muss mindestens 3 Buchstaben lang sein</p>{/if}
 
         <label for="datum">Datum:</label>
         <input type="date" id="datum" value="{formatDateForInput(newOstEvent.date)}" on:change={ (e) => newOstEvent.date = new Date(e.target.value)}>
@@ -26,7 +27,7 @@
 
         <label for="eintritt">Eintritt:</label>
         <input type="number" min="0" step="1" id="eintritt" bind:value="{newOstEvent.entranceFee}">
-        <p class="hint">Lass das Feld leer um es nicht anzuzeigen</p>
+        <!--<p class="hint">Bei 0.- wird das Feld ausgeblendet</p>-->
 
         <label for="kontakt">Kontakt:</label>
         <input type="email" id="kontakt" bind:value="{newOstEvent.contactEmail}" placeholder="hallo@email.ch">
@@ -45,7 +46,7 @@
 
         <div class="button-row">
             <a class="dashboard-button-secondary" href="/intern/dashboard">Abbrechen</a>
-            <button class="dashboard-button" on:click={() => dispatch('eventSafe', newOstEvent)}>Speichern</button>
+            <button class="dashboard-button" on:click={saveOstEvent}>Speichern</button>
         </div>
 
     </div>
@@ -62,6 +63,8 @@
     const dispatch = createEventDispatcher()
     $: dispatch('eventUpdate', newOstEvent)
 
+    $: showNameError = newOstEvent.name.trim().length < 3
+
     const newOstEvent: OstEvent = {
         _id: initialOstEvent?._id,
         name: initialOstEvent?.name || '',
@@ -77,6 +80,13 @@
         linkName: "",
         organiserId: "",
         // TODO: add main image
+    }
+
+    function saveOstEvent() {
+        // validate input
+        if (showNameError) return
+
+        dispatch('eventSave', newOstEvent)
     }
 
     function formatDateForInput(dateString: string | Date): string {
@@ -139,6 +149,10 @@
 
     .hint {
         color: var(--admin-gray);
+    }
+
+    .error-msg {
+        color: #ff5454;
     }
 
     .button-row {
