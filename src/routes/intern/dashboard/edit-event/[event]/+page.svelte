@@ -4,7 +4,6 @@
 <script lang="ts">
 
     import OstEventForm from "$lib/components/dashboard/OstEventForm.svelte";
-    import {redirect} from "@sveltejs/kit";
 
     export let data
 

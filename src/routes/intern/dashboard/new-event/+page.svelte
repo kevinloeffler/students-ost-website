@@ -1,9 +1,37 @@
-<h2>Create a new event here...</h2>
-<p>for org: {data.organisation?.name}</p>
 
+<OstEventForm initialOstEvent="{undefined}" on:eventSave={(e) => handleEventSave(e.detail)} />
 
 <script lang="ts">
 
+    import OstEventForm from "$lib/components/dashboard/OstEventForm.svelte";
+
     export let data
+
+    async function handleEventSave(newOstEvent: OstEvent) {
+        const completeOstEvent = newOstEvent
+        completeOstEvent.organiserId = data.organisation._id
+        completeOstEvent.organiser = data.organisation.name
+        completeOstEvent.entranceFee = completeOstEvent.entranceFee === 0 ? undefined : completeOstEvent.entranceFee
+        completeOstEvent.mainImage = ''
+        console.log('COMPLETE EVENT:', completeOstEvent)
+
+        await sendRequest(completeOstEvent)
+    }
+
+    async function sendRequest(ostEvent: OstEvent) {
+        const request = await fetch(`/api/events`, {
+            method: 'POST',
+            body: JSON.stringify(ostEvent),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        const response = await request.json()
+        if (response.status) {
+            document.location.href = '/intern/dashboard'
+        }
+        // TODO: handle case where the event could not be updated
+
+    }
 
 </script>
