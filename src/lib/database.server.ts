@@ -82,26 +82,13 @@ export async function getUserByUsername(username: string): Promise<User> {
 
 export async function createOstEvent(ostEvent: OstEvent): Promise<Optional<OstEvent>> {
     try {
-        return await OstEvent.create({
-            name: ostEvent.name,
-            date: ostEvent.date,
-            description: ostEvent.description,
-            mainImage: ostEvent.mainImage,
-            startTime: ostEvent.startTime,
-            endTime: ostEvent.endTime,
-            entranceFee: ostEvent.entranceFee,
-            contactEmail: ostEvent.contactEmail,
-            contactPhone: ostEvent.contactPhone,
-            organiser: ostEvent.organiser,
-            linkName: ostEvent.linkName,
-            link: ostEvent.link,
-        })
+        return await OstEvent.create(ostEvent)
     } catch (error) {
         console.error(error)
     }
 }
 
-export async function insertOrUpdateOstEvent(ostEvent: OstEvent): Promise<Optional<any>> {
+export async function insertOrUpdateOstEvent(ostEvent: OstEvent): Promise<any> {
     try {
         return await OstEvent.updateOne({_id: ostEvent._id}, ostEvent, {upsert: true})
     } catch (error) {
@@ -131,6 +118,14 @@ export async function getOstEvent(nameOrId: string): Promise<Optional<OstEvent>>
 
     if (!ostEvent) { return undefined }
     return ostEvent
+}
+
+export async function deleteOstEvent(id: string): Promise<any> {
+    try {
+        return await OstEvent.deleteOne({_id: id})
+    } catch (error) {
+        console.error(error)
+    }
 }
 
 

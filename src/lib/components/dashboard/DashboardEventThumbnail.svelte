@@ -21,6 +21,7 @@
 <script lang="ts">
 
     import {formatDateToString} from "$lib/util.js";
+    import {invalidate, invalidateAll} from "$app/navigation";
 
     export let ostEvent: OstEvent
 
@@ -28,8 +29,11 @@
         document.location.href = `/intern/dashboard/edit-event/${ostEvent._id}`
     }
 
-    function deleteEvent() {
-        // TODO: handle delete
+    async function deleteEvent() {
+        const request = await fetch(`/api/events/${ostEvent._id}`, {method: 'DELETE'})
+        const response = await request.json()
+        // TODO: handle error case
+        await invalidateAll()  // reruns the load function of the page
     }
 
 </script>
