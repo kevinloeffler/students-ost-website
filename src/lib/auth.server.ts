@@ -11,8 +11,12 @@ export function createJWT(accessToken: AccessToken) {
     return jwt.sign(accessToken, JWT_SECRET, {expiresIn: JWT_EXPIRES_IN})
 }
 
-export function readJWT(token: string): AccessToken {
+export function readJWT(token: Optional<string>): AccessToken {
     let payload: any
+
+    if (!token) {
+        throw {name: 'NO TOKEN FOUND', message: 'No JWT found', code: 32}
+    }
 
     try {
         payload = jwt.verify(token, JWT_SECRET)
