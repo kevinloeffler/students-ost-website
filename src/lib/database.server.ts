@@ -101,6 +101,14 @@ export async function createOstEvent(ostEvent: OstEvent): Promise<Optional<OstEv
     }
 }
 
+export async function insertOrUpdateOstEvent(ostEvent: OstEvent): Promise<Optional<any>> {
+    try {
+        return await OstEvent.updateOne({_id: ostEvent._id}, ostEvent, {upsert: true})
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 export async function getAllOstEvents(): Promise<OstEvent[]> {
     /* TODO: add start from (today) date */
     return OstEvent.find().sort({date: 'asc'});
