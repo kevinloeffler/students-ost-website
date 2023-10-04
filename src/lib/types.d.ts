@@ -34,6 +34,7 @@ type OstEvent = {
     name: string,
     date: Date,
     description: string,
+    _id?: string,
     mainImage?: string
     startTime?: string,
     endTime?: string,
