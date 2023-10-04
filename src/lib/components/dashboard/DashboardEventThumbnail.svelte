@@ -10,7 +10,7 @@
             <img src="/images/intern/edit-icon.svg" alt="Bearbeiten Icon">
         </button>
         <div class="separator"></div>
-        <button>
+        <button on:click={deleteEvent}>
             <img src="/images/intern/delete-icon.svg" alt="Löschen Icon">
         </button>
     </div>
@@ -25,7 +25,11 @@
     export let ostEvent: OstEvent
 
     function editEvent() {
+        document.location.href = `/intern/dashboard/edit-event/${ostEvent._id}`
+    }
 
+    function deleteEvent() {
+        // TODO: handle delete
     }
 
 </script>
