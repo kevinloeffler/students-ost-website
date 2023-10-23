@@ -4,7 +4,7 @@ export const load: PageLoad = ( async ({ fetch, params}) => {
 
     const organisationParameter = params.verein
     const rawOrganisation = await fetch(`/api/organisation/${encodeURI(organisationParameter)}`)
-    const organisation: Verein = await rawOrganisation.json()
+    const organisation: Organisation = await rawOrganisation.json()
 
     return {
         verein: organisation
