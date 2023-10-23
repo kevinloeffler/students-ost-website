@@ -7,6 +7,6 @@ export const load: PageLoad = ( async ({ fetch, params}) => {
     // TODO: load "featured" events -> managed by a students admin
 
     return {
-        ostEvents: ostEvents
+        ostEvents: ostEvents.slice(0, 3)
     }
 })
