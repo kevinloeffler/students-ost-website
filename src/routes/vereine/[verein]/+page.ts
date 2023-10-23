@@ -2,12 +2,12 @@ import type { PageLoad } from './$types'
 
 export const load: PageLoad = ( async ({ fetch, params}) => {
 
-    const vereinParameter = params.verein
-    const rawVerein = await fetch(`/api/vereine/${encodeURI(vereinParameter)}`)
-    const verein: Verein = await rawVerein.json()
+    const organisationParameter = params.verein
+    const rawOrganisation = await fetch(`/api/organisation/${encodeURI(organisationParameter)}`)
+    const organisation: Verein = await rawOrganisation.json()
 
     return {
-        verein: verein
+        verein: organisation
     }
 
 })

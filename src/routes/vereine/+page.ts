@@ -1,10 +1,10 @@
 import type { PageLoad } from './$types'
 
 export const load: PageLoad = ( async ({ fetch, params}) => {
-    const rawVereine = await fetch('/api/vereine')
-    const vereine: Verein[] = await rawVereine.json()
+    const rawOrganisations = await fetch('/api/organisation')
+    const organisations: Organisation[] = await rawOrganisations.json()
 
     return {
-        vereine: vereine
+        vereine: organisations
     }
 })

@@ -1,8 +1,8 @@
 import * as mongoose from 'mongoose'
 import bcrypt from 'bcrypt'
-import {Verein} from './models/Verein.js'
 import {User} from '$lib/models/User.js'
 import {OstEvent} from "$lib/models/OstEvent";
+import {Organisation} from "$lib/models/Organisation";
 
 const DB_URI: string = process.env.DB_URI || 'mongodb://127.0.0.1:27017'
 const DB_NAME: string = process.env.DB_NAME || 'students_ost_db'
@@ -23,25 +23,31 @@ await main()
 /* VEREINE */
 /* TODO: make VEREINE generic to include Fachschaften */
 
-export async function getAllVereine(): Promise<Verein[]> {
-    const vereine: Verein[] | null | undefined = await Verein.find().sort({ 'displayOrder': 'asc' })
+export async function getAllOrganisations(): Promise<Organisation[]> {
+    const orgs: Organisation[] | null | undefined = await Organisation.find().sort({ 'displayOrder': 'asc' })
+    if (!orgs) { return [] }
+    return orgs
+}
+
+export async function getAllVereine(): Promise<Organisation[]> {
+    const vereine: Organisation[] | null | undefined = await Organisation.find({ 'type': 'Verein' }).sort({ 'displayOrder': 'asc' })
     if (!vereine) { return [] }
     return vereine
 }
 
-export async function getVerein(nameOrId: string): Promise<Optional<Verein>> {
+export async function getOrganisation(nameOrId: string): Promise<Optional<Organisation>> {
     if (nameOrId === '') return undefined
 
-    let verein: Verein | undefined | null = await Verein.findOne({'name': nameOrId})
-    if (!verein) {
-        verein = await Verein.findById(nameOrId)
-        if (!verein) { return undefined }
+    let org: Organisation | undefined | null = await Organisation.findOne({'name': nameOrId})
+    if (!org) {
+        org = await Organisation.findById(nameOrId)
+        if (!org) { return undefined }
     }
-    return verein
+    return org
 }
 
-export async function createVerein() {
-    return await Verein.create({name: "Test Verein", description: "Dies ist ein Test Verein..."})
+export async function createOrganisation() {
+    return await Organisation.create({name: "Test Verein", description: "Dies ist ein Test Verein..."})
 }
 
 

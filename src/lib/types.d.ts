@@ -1,15 +1,24 @@
 type Optional<t> = t | undefined
 
-type VereinEvent = {
-    name: string,
-    description: string,
-}
-
 type User = {
     username: string,
     password: string,
     group: AccessGroup,
     organisation?: string,
+}
+
+type OrganisationType =
+    'Verein' |
+    'Fachschaft'
+
+type Organisation = {
+    name: string,
+    type: OrganisationType,
+    description: string,
+    logo?: string,
+    website?: string,
+    email?: string,
+    displayOrder?: number,
 }
 
 type Verein = {
