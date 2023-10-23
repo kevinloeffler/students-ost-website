@@ -23,16 +23,11 @@ await main()
 /* VEREINE */
 /* TODO: make VEREINE generic to include Fachschaften */
 
-export async function getAllOrganisations(): Promise<Organisation[]> {
-    const orgs: Organisation[] | null | undefined = await Organisation.find().sort({ 'displayOrder': 'asc' })
+export async function getAllOrganisations(type: Optional<OrganisationType> = undefined): Promise<Organisation[]> {
+    const filter = type ? {type: type} : {}
+    const orgs: Organisation[] | null | undefined = await Organisation.find(filter).sort({ 'displayOrder': 'asc' })
     if (!orgs) { return [] }
     return orgs
-}
-
-export async function getAllVereine(): Promise<Organisation[]> {
-    const vereine: Organisation[] | null | undefined = await Organisation.find({ 'type': 'Verein' }).sort({ 'displayOrder': 'asc' })
-    if (!vereine) { return [] }
-    return vereine
 }
 
 export async function getOrganisation(nameOrId: string): Promise<Optional<Organisation>> {
