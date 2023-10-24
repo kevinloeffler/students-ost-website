@@ -11,7 +11,7 @@
 
     <div class="profile-wrapper">
         <h2>Profil:</h2>
-        <DashboardButton link="/" content="Profil bearbeiten" onClick="{() => {console.log('clicked')}}" minimalWidth/>
+        <DashboardButton link="/intern/dashboard/profile" content="Profil bearbeiten" onClick="{() => {console.log('clicked')}}" minimalWidth/>
     </div>
 </div>
 
