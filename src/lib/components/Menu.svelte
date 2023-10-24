@@ -17,7 +17,7 @@
             <div><a href="/fachschaften" class="menu-link" on:click={toggleShowMenu}>Fachschaften</a></div>
             <div><a href="/starthilfe" class="menu-link" on:click={toggleShowMenu}>Starthilfe</a></div>
             <div><a href="/kontakt" class="menu-link" on:click={toggleShowMenu}>Kontakt</a></div>
-            <div><a href="/shop" class="menu-link" on:click={toggleShowMenu}>Shop</a></div>
+            <!--<div><a href="/shop" class="menu-link" on:click={toggleShowMenu}>Shop</a></div>-->
         </div>
         <div class="menu-grid-element"></div>
         <div class="menu-grid-element"></div>
@@ -63,7 +63,7 @@
         left: 0;
 
         display: grid;
-        grid-template-rows: 1fr 7fr 1fr;
+        grid-template-rows: 1fr 6fr 1fr;
         grid-template-columns: 1fr clamp(0px, 90vw, 900px) 1fr;
         grid-gap: 2px;
 
@@ -76,7 +76,7 @@
 
     .menu-subgrid {
         display: grid;
-        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr /*1fr*/;
         grid-template-columns: 1fr;
         background-color: white;
     }
