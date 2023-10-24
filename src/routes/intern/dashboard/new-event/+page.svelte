@@ -18,8 +18,6 @@
     }
 
     async function sendRequest(ostEvent: OstEvent, file: any = undefined) {
-        // TODO: check if file is undefined
-
         const request = await fetch(`/api/events`, {
             method: 'POST',
             body: JSON.stringify({ostEvent: ostEvent, file: file}),

@@ -35,10 +35,15 @@
         <label for="tel">Tel:</label>
         <input type="tel" id="tel" bind:value="{newOstEvent.contactPhone}" placeholder="012 345 67 89">
 
-        <!-- TODO: add ability to upload a main image -->
         <label for="bild">Bild:</label>
-        <input type="file" id="bild" bind:this={fileInput} bind:value={file}>
-
+        {#if newOstEvent.mainImage}
+            <div class="image-exists-placeholder">
+                <img src="{initialOstEvent?.mainImage}" alt="Titelbild des Event">
+                <button on:click={deleteImage}>Bild löschen</button>
+            </div>
+        {:else}
+            <input type="file" id="bild" bind:this={fileInput} bind:value={file}>
+        {/if}
     </div>
 
     <div class="form-right">
@@ -71,6 +76,10 @@
     let file: any
     let fileInput: HTMLInputElement
 
+    function deleteImage() {
+        newOstEvent.mainImage = ''
+    }
+
 
     const newOstEvent: OstEvent = {
         _id: initialOstEvent?._id,
@@ -79,24 +88,24 @@
         description: initialOstEvent?.description || '',
         startTime: initialOstEvent?.startTime,
         endTime: initialOstEvent?.endTime,
-        entranceFee: 0,
+        entranceFee: initialOstEvent?.entranceFee || 0,
         organiser: initialOstEvent?.organiser,
         organiserId: initialOstEvent?.organiserId,
         contactEmail: initialOstEvent?.contactEmail,
         contactPhone: initialOstEvent?.contactPhone,
         link: initialOstEvent?.link,
         linkName: initialOstEvent?.linkName,
-        // TODO: add main image
         mainImage: initialOstEvent?.mainImage,
     }
 
     function saveOstEvent() {
         // validate input
+        console.log('saving ost event')
         if (showNameError) return
-        console.log(file)
+        console.log('file:', file)
 
         // load file
-        if (fileInput.files && fileInput.files.length > 0) {
+        if (fileInput?.files && fileInput?.files?.length > 0) {
             const reader = new FileReader();
             reader.onload = function() {
                 const arrayBuffer = new Uint8Array(reader.result)
@@ -193,6 +202,23 @@
     .dashboard-button-secondary {
         width: 35%;
         text-align: center;
+    }
+
+    .image-exists-placeholder {
+        display: flex;
+        border: 2px solid var(--admin-gray);
+    }
+
+    .image-exists-placeholder > img {
+        height: 80px;
+    }
+
+    .image-exists-placeholder > button {
+        margin-left: 20px;
+        color: white;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
     }
 
 </style>
