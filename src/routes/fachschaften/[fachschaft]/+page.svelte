@@ -6,7 +6,7 @@
 
         <div>
             <div class="header">
-                <img class="logo" src="/images/logos/kreaktiv-logo.png" alt="Fachschaft Logo">
+                <img class="logo" src="{fachschaft.logo}" alt="Fachschaft Logo">
 
                 <h1 class="page-title">{fachschaft.name}</h1>
             </div>

@@ -6,7 +6,7 @@
 
         <div>
             <div class="header">
-                <img class="logo" src="/images/logos/kreaktiv-logo.png" alt="Vereins Logo">
+                <img class="logo" src="{verein.logo}" alt="Vereins Logo">
 
                 <h1 class="page-title">{verein.name}</h1>
             </div>
