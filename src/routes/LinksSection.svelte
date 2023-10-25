@@ -7,8 +7,8 @@
         <a href="/fachschaften" class="link-wrapper link-item-2">
             <p class="link-text">Fachschaften</p>
         </a>
-        <a href="/shop" class="link-wrapper link-item-3">
-            <p class="link-text">Shop</p>
+        <a href="/kontakt" class="link-wrapper link-item-3">
+            <p class="link-text">Students</p>
         </a>
 
         <a href="starthilfe" class="link-wrapper link-item-4">
