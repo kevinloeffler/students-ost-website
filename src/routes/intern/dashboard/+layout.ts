@@ -7,7 +7,7 @@ export const load: PageLoad = ( async ({ fetch }) => {
         console.log('unauthorized -> redirecting')
         throw redirect(302, '/intern/login')
     }
-    const dashboard = await response.json()
+    const dashboard: {org: Organisation, orgEvents: OstEvent[]} = await response.json()
     return {
         organisation: dashboard.org,
         orgEvents: dashboard.orgEvents,
