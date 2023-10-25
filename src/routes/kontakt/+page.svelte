@@ -17,27 +17,39 @@
             </div>
             <div class="position position-2">
                 <p class="role">Vize</p>
-                <h3>Tobias</h3>
+                <h3>Vakant</h3>
             </div>
             <div class="position position-3">
-                <p class="role">Kassier</p>
-                <h3>Tobias</h3>
+                <p class="role">Finanzier</p>
+                <h3>Lucas</h3>
             </div>
             <div class="position position-4">
-                <p class="role">Events</p>
-                <h3>Tobias</h3>
+                <p class="role">Aktuar</p>
+                <h3>Ali</h3>
             </div>
             <div class="position position-5">
-                <p class="role">Technik</p>
-                <h3>Tobias</h3>
-            </div>
-            <div class="position position-6">
                 <p class="role">IT</p>
-                <h3>Tobias</h3>
+                <h3>Kevin</h3>
             </div>
             <div class="position position-6">
-                <p class="role">Vereine / Fachschaften</p>
-                <h3>Tobias</h3>
+                <p class="role">Co-Eventhead</p>
+                <h3>Wadim</h3>
+            </div>
+            <div class="position position-7">
+                <p class="role">Co-Eventhead</p>
+                <h3>Pascal</h3>
+            </div>
+            <div class="position position-8">
+                <p class="role">Technik</p>
+                <h3>Dario</h3>
+            </div>
+            <div class="position position-9">
+                <p class="role">Vertretung VS-OST</p>
+                <h3>Nicolas</h3>
+            </div>
+            <div class="position position-10">
+                <p class="role">Vertretung Untervereine</p>
+                <h3>Vakant</h3>
             </div>
 
             <a href="mailto:students-rj@ost.ch">
