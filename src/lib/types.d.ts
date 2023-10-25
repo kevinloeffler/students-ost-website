@@ -15,6 +15,7 @@ type Organisation = {
     name: string,
     type: OrganisationType,
     description: string,
+    _id?: string,
     logo?: string,
     website?: string,
     email?: string,

@@ -20,8 +20,8 @@ async function main() {
 
 await main()
 
-/* VEREINE */
-/* TODO: make VEREINE generic to include Fachschaften */
+/* ORGANISATIONS */
+// TODO: Remove name as input: only use mongo _id
 
 export async function getAllOrganisations(type: Optional<OrganisationType> = undefined): Promise<Organisation[]> {
     const filter = type ? {type: type} : {}
@@ -39,6 +39,10 @@ export async function getOrganisation(nameOrId: string): Promise<Optional<Organi
         if (!org) { return undefined }
     }
     return org
+}
+
+export async function updateOrganisation(newOrganisation: Organisation) {
+    return Organisation.updateOne({_id: newOrganisation._id}, newOrganisation)
 }
 
 export async function createOrganisation() {
