@@ -1,7 +1,5 @@
 <NavBar />
 
-<WipWarning />
-
 <HomeHeader ostEvents="{data.ostEvents}"/>
 <LinksSection />
 <StudentsSection />
