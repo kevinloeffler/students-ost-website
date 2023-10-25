@@ -25,7 +25,7 @@ export const POST: RequestHandler = async ({ params , cookies, request}): Promis
         return json({success: false, reason: 'user is unauthorized to modify this event'})
     }
 
-    ostEvent.mainImage = await saveImageToDisk(payload.file)
+    ostEvent.mainImage = await saveImageToDisk(payload.file, 'events')
 
     const response = await insertOrUpdateOstEvent(ostEvent)
 
