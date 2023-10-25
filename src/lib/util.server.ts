@@ -3,6 +3,7 @@ import fs from "fs/promises";
 
 export async function saveImageToDisk(file: Optional<FileObject>): Promise<string> {
     if (!file) return ''  // we could the path to a placeholder image here
+    if (Object.keys(file.data!).length === 0) throw new Error('Trying to safe empty file')
 
     const fileObject: FileObject = file
     const fileData = fileObject.data as {[key: string]: number}
