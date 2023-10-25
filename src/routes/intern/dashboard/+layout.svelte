@@ -25,18 +25,13 @@
 
 <script lang="ts">
 
-    import {browser} from "$app/environment";
     import DashboardButton from "$lib/components/dashboard/DashboardButton.svelte";
 
     export let data
     $: hasVerein = !!data.organisation
 
-    function logout() {
-        if (browser) {
-            // TODO: deleting the cookie does not work (can't access cookies from document)
-            console.log(document.cookie)
-            document.cookie = "name=jwt;expires=" + new Date(0).toUTCString() + ';'
-        }
+    async function logout() {
+        await fetch('/api/intern/logout')
     }
 
 </script>
