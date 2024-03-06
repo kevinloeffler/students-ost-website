@@ -1,8 +1,12 @@
 import * as mongoose from 'mongoose'
 import bcrypt from 'bcrypt'
+import dotenv from 'dotenv'
 import {User} from '$lib/models/User.js'
 import {OstEvent} from "$lib/models/OstEvent";
 import {Organisation} from "$lib/models/Organisation";
+import {building} from '$app/environment'
+
+dotenv.config()
 
 const DB_URI: string = process.env.DB_URI || 'mongodb://127.0.0.1:27017'
 const DB_NAME: string = process.env.DB_NAME || 'students_ost_db'
@@ -18,7 +22,9 @@ async function main() {
     }
 }
 
-await main()
+if (!building) {
+    await main()
+}
 
 /* ORGANISATIONS */
 // TODO: Remove name as input: only use mongo _id

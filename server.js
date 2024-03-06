@@ -12,13 +12,13 @@ const PORT = 3000
 
 // add a route that lives separately from the SvelteKit app
 app.get('/healthcheck', (req, res) => {
-    res.end('ok');
-});
+    res.end('ok')
+})
 
 
 // let SvelteKit handle everything else, including serving prerendered pages and static assets
-app.use(handler);
+app.use(handler)
 
 app.listen(PORT, () => {
     console.log(`listening on port ${PORT}`)
-});
+})
