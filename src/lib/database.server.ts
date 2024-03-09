@@ -108,7 +108,8 @@ export async function insertOrUpdateOstEvent(ostEvent: OstEvent): Promise<any> {
 }
 
 export async function getAllOstEvents(): Promise<OstEvent[]> {
-    return OstEvent.find({'date': {'$gte': new Date()}}).sort({date: 'asc'});
+    const yesterday = new Date().setDate(new Date().getDate() - 1)
+    return OstEvent.find({'date': {'$gte': yesterday}}).sort({date: 'asc'});
 }
 
 export async function getOstEventsByOrganiser(organiserId: string): Promise<OstEvent[]> {
