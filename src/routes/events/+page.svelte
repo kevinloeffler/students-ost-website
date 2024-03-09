@@ -8,14 +8,20 @@
 
         <div class="wrapper">
 
-            <aside>
-                <YearPicker oldestYear={oldestYear} newestYear={newestYear} on:scrollEvent={scrollToTarget} />
-            </aside>
+            {#if data.ostEvents.length > 0}
+                <aside>
+                    <YearPicker oldestYear={oldestYear} newestYear={newestYear} on:scrollEvent={scrollToTarget} />
+                </aside>
+            {/if}
 
-            <div>
-                {#each data.ostEvents as ostEvent}
-                    <EventThumbnail ostEvent="{ostEvent}" />
-                {/each}
+            <div style="width: 100%">
+                {#if data.ostEvents.length === 0}
+                    <p class="empty-events-msg">Aktuell stehen keine Events an</p>
+                {:else}
+                    {#each data.ostEvents as ostEvent}
+                        <EventThumbnail ostEvent="{ostEvent}" />
+                    {/each}
+                {/if}
             </div>
 
         </div>
@@ -35,8 +41,8 @@
 
     export let data;
 
-    const oldestYear = new Date(data.ostEvents[0].date).getFullYear()
-    const newestYear = new Date(data.ostEvents[data.ostEvents.length - 1].date).getFullYear()
+    const oldestYear = new Date(data.ostEvents[0]?.date).getFullYear() || new Date().getFullYear()
+    const newestYear = new Date(data.ostEvents[data.ostEvents.length - 1]?.date).getFullYear() || new Date().getFullYear()
 
     function scrollToTarget(event: any) {
         event.detail.target.scrollIntoView({behavior: "smooth"})
@@ -67,6 +73,13 @@
 
     aside {
         min-width: 140px;
+    }
+
+    .empty-events-msg {
+        width: 100%;
+        padding: 12px 16px;
+        text-align: center;
+        color: var(--admin-gray);
     }
 
     @media (max-width: 600px) {
