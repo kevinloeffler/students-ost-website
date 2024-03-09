@@ -1,8 +1,13 @@
 import crypto from "crypto";
 import fs from "fs/promises";
 
-export async function saveImageToDisk(file: Optional<FileObject>, directory: string): Promise<string> {
-    if (!file) return ''  // we could the path to a placeholder image here
+export async function saveImageToDisk(file: Optional<FileObject | string>, directory: string): Promise<string> {
+    if (!file) return ''  // could add the path to a placeholder image here
+    if (typeof file === 'string') {
+        if (file.length === 0) return ''  // could add the path to a placeholder image here
+        return file  // return existing file path
+    }
+
     if (Object.keys(file.data!).length === 0) throw new Error('Trying to safe empty file')
 
     const fileObject: FileObject = file

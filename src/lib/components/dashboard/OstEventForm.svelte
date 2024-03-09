@@ -77,7 +77,7 @@
     let fileInput: HTMLInputElement
 
     function deleteImage() {
-        newOstEvent.mainImage = ''
+        newOstEvent.mainImage = undefined
     }
 
 
@@ -119,7 +119,8 @@
             reader.readAsArrayBuffer(fileInput.files[0])
 
         } else {
-            dispatch('eventSave', {ostEvent: newOstEvent, file: undefined})
+            const mainImage = file || newOstEvent.mainImage
+            dispatch('eventSave', {ostEvent: newOstEvent, file: mainImage})
         }
     }
 
