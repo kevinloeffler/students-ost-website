@@ -61,6 +61,7 @@
         right: 0;
         bottom: 0;
         left: 0;
+        height: 100dvh;
 
         display: grid;
         grid-template-rows: 1fr 6fr 1fr;
