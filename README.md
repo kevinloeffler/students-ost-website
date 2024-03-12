@@ -1,4 +1,4 @@
-# VSOST
+# Students OST-RJ
 
 The [website](https://students-rj.ch) for the student cooperation at East Switzerland University of Applied Science campus Rapperswil
 
