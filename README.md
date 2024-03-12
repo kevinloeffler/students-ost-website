@@ -1,10 +1,10 @@
-# Students OST-RJ
+# Students OST-RJ Website
 
 The [website](https://students-rj.ch) for the student cooperation at East Switzerland University of Applied Science campus Rapperswil
 
 ## How to Use
 
-This repository is intended for submitting and resolving issues. If you witness behavior that you think is wrong please report it in the "Issues" tab. Pull request are also welcome.
+This repository is intended for submitting and resolving issues. If you witness behavior that you think is wrong please report it in the "Issues" tab. Pull requests are also welcome.
 
 ## Open an Issue
 
