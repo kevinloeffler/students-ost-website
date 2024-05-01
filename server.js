@@ -10,6 +10,11 @@ const PORT = 3000
 //}
 // app.use(cors(corsOptions))
 
+// Increase the request size limit
+app.use(express.json({ limit: '20mb' }));
+app.use(express.urlencoded({ extended: true, limit: '20mb' }));
+
+
 // add a route that lives separately from the SvelteKit app
 app.get('/healthcheck', (req, res) => {
     res.end('ok')
