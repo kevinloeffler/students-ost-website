@@ -10,6 +10,7 @@ const PORT = 3000
 //}
 // app.use(cors(corsOptions))
 
+app.use(express.static('public'))
 
 // add a route that lives separately from the SvelteKit app
 app.get('/healthcheck', (req, res) => {

@@ -15,7 +15,7 @@ export const POST: RequestHandler = async ({request}): Promise<Response> => {
 
     const newFileName = crypto.randomUUID() + '.' + file.name.split('.').pop()
 
-    const filePath = `static/uploads/${dir}/${newFileName}`  // use public?
+    const filePath = `public/uploads/${dir}/${newFileName}`
     const buffer = await file.arrayBuffer()
     const bufferView = new Uint8Array(buffer)
     await fs.writeFile(filePath, bufferView)
@@ -25,6 +25,6 @@ export const POST: RequestHandler = async ({request}): Promise<Response> => {
 
 export const DELETE: RequestHandler = async ({request}): Promise<Response> => {
     const body = await request.json()
-    await fs.unlink(`static/${body.path}`)
+    await fs.unlink(`public/${body.path}`)
     return json({'status': true})
 }

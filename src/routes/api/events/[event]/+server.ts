@@ -2,6 +2,7 @@ import type { RequestHandler } from '@sveltejs/kit';
 import {deleteOstEvent, getOstEvent, getUserByUsername, insertOrUpdateOstEvent} from "$lib/database.server";
 import {json} from "@sveltejs/kit";
 import {readJWT} from "$lib/auth.server";
+import fs from 'fs/promises'
 
 export async function GET({ params }: any): Promise<Response> {
     const ostEvent = await getOstEvent(params.event)
@@ -29,16 +30,19 @@ export const POST: RequestHandler = async ({ cookies, request}): Promise<Respons
 
 export const DELETE: RequestHandler = async ({params, cookies}): Promise<Response> => {
     const id = params.event as string
+    const ostEvent = await getOstEvent(id)
 
     try {
         const accessToken = readJWT(cookies.get('jwt'))
         const user = await getUserByUsername(accessToken.username)
-        const ostEvent = await getOstEvent(id)
         if (user.organisation !== ostEvent?.organiserId) throw new Error('unauthorized')
     } catch (error) {
         console.error(error)
         return json({success: false, reason: 'user is unauthorized to modify this event'})
     }
+
+    // delete image if there is one
+    if (ostEvent?.mainImage) { await fs.unlink(`public/${ostEvent.mainImage}`) }
 
     const response = await deleteOstEvent(id)
     return json({status: response.acknowledged, deleteCount: response.deleteCount})

@@ -12,6 +12,7 @@ services:
     volumes:
       - ./src:/app/src
       - ./static:/app/static
+      - ./public:/app/public
     environment:
       DB_URI: mongodb://db:27017
       DB_NAME: "${DB_NAME}"
