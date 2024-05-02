@@ -2,16 +2,14 @@ import type { RequestHandler } from '@sveltejs/kit';
 import {createOstEvent, getAllOstEvents, getUserByUsername} from "$lib/database.server";
 import {json} from "@sveltejs/kit";
 import { readJWT } from '$lib/auth.server';
-import {saveImageToDisk} from "$lib/util.server";
 
 export async function GET() {
     const ostEvents: OstEvent[] = await getAllOstEvents()
     return json(ostEvents)
 }
 
-export const POST: RequestHandler = async ({ params , cookies, request}): Promise<Response> => {
-    const payload = await request.json()
-    const ostEvent: OstEvent = payload.ostEvent
+export const POST: RequestHandler = async ({ cookies, request}): Promise<Response> => {
+    const ostEvent = await request.json()
 
     // validate that user is allowed to change this event
     try {
@@ -22,8 +20,6 @@ export const POST: RequestHandler = async ({ params , cookies, request}): Promis
         console.log(error)
         return json({success: false, reason: 'user is unauthorized to modify this event'})
     }
-
-    ostEvent.mainImage = await saveImageToDisk(payload.file, 'events')
 
     const response = await createOstEvent(ostEvent)
 

@@ -42,7 +42,7 @@
                 <button on:click={deleteImage}>Bild löschen</button>
             </div>
         {:else}
-            <input type="file" id="bild" bind:this={fileInput} bind:value={file}>
+            <input type="file" id="bild" on:change={handleImageUpdate}>
         {/if}
     </div>
 
@@ -72,14 +72,37 @@
 
     $: showNameError = newOstEvent.name.trim().length < 3
 
-    // input file
-    let file: any
-    let fileInput: HTMLInputElement
+    async function handleImageUpdate(event: any) {
+        const file = event?.target?.files[0]
+        if (!file) return
 
-    function deleteImage() {
-        newOstEvent.mainImage = undefined
+        const formData = new FormData()
+        formData.append('file', file)
+        formData.append('dir', 'events')
+
+        try {
+            const response = await fetch('/api/upload', { method: 'POST', body: formData })
+            if (response.ok) {
+                const result = await response.json()
+                newOstEvent.mainImage = result.url
+            } else {
+                console.error('Error uploading file:', response.statusText)
+            }
+        } catch (error) {
+            console.error('Error uploading file:', error)
+        }
     }
 
+    async function deleteImage() {
+        try {
+            const response = await fetch('/api/upload', {method: 'DELETE', body: JSON.stringify({path: newOstEvent.mainImage})})
+            if (response.ok) {
+                newOstEvent.mainImage = ''
+            }
+        } catch (err) {
+            console.error(err)
+        }
+    }
 
     const newOstEvent: OstEvent = {
         _id: initialOstEvent?._id,
@@ -95,33 +118,14 @@
         contactPhone: initialOstEvent?.contactPhone,
         link: initialOstEvent?.link,
         linkName: initialOstEvent?.linkName,
-        mainImage: initialOstEvent?.mainImage,
+        mainImage: initialOstEvent?.mainImage || '',
     }
 
     function saveOstEvent() {
         // validate input
-        console.log('saving ost event')
         if (showNameError) return
-        console.log('file:', file)
+        dispatch('eventSave', newOstEvent)
 
-        // load file
-        if (fileInput?.files && fileInput?.files?.length > 0) {
-            const reader = new FileReader();
-            reader.onload = function() {
-                const arrayBuffer = new Uint8Array(reader.result)
-
-                const splitFileName = file.split('.')
-                const fileSuffix = splitFileName[splitFileName.length - 1]
-                const fileObject: FileObject = {data: arrayBuffer, suffix: fileSuffix}
-
-                dispatch('eventSave', {ostEvent: newOstEvent, file: fileObject})
-            }
-            reader.readAsArrayBuffer(fileInput.files[0])
-
-        } else {
-            const mainImage = file || newOstEvent.mainImage
-            dispatch('eventSave', {ostEvent: newOstEvent, file: mainImage})
-        }
     }
 
     function formatDateForInput(dateString: string | Date): string {

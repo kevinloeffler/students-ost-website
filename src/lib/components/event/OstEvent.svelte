@@ -3,7 +3,9 @@
 <section class="default-section">
     <div class="default-container">
 
-        <img src="{ostEvent.mainImage}" alt="Event Titelbild">
+        {#if ostEvent.mainImage}
+            <img src="{ostEvent.mainImage}" alt="Event Titelbild">
+        {/if}
         <h1 class="page-title">{ostEvent.name}</h1>
         <h2>{formatDateToString(ostEvent.date)}</h2>
 
