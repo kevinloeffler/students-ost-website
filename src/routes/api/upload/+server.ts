@@ -1,8 +1,17 @@
 import crypto from "crypto";
 import {fail, json, type RequestHandler} from '@sveltejs/kit'
 import fs from 'fs/promises'
+import {readJWT} from '$lib/auth.server.js'
 
-export const POST: RequestHandler = async ({request}): Promise<Response> => {
+export const POST: RequestHandler = async ({request, cookies}): Promise<Response> => {
+
+    // validate that user is allowed to delete the ressource
+    try {
+        const accessToken = readJWT(cookies.get('jwt'))
+    } catch (error) {
+        return json({success: false, reason: 'user is unauthorized to create this ressource'})
+    }
+
     const body = await request.formData();
     const file = body.get('file') as Optional<File>
 
@@ -23,7 +32,16 @@ export const POST: RequestHandler = async ({request}): Promise<Response> => {
     return json({'status': true, 'url': `/uploads/${dir}/${newFileName}`})
 }
 
-export const DELETE: RequestHandler = async ({request}): Promise<Response> => {
+export const DELETE: RequestHandler = async ({request, cookies}): Promise<Response> => {
+
+    // validate that user is allowed to delete the ressource
+    try {
+        const accessToken = readJWT(cookies.get('jwt'))
+        // TODO: implement further validation, issue #7
+    } catch (error) {
+        return json({success: false, reason: 'user is unauthorized to delete this ressource'})
+    }
+
     const body = await request.json()
     await fs.unlink(`public/${body.path}`)
     return json({'status': true})
