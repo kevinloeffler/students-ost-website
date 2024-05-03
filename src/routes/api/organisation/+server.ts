@@ -17,16 +17,14 @@ export async function GET({url}: any) {
 
 
 export const POST: RequestHandler = async ({request, cookies}) => {
-    const payload: {organisation: Organisation, file: any } = await request.json()
-    const newOrganisation: Organisation = payload.organisation
-    const fileObject: Optional<FileObject> = payload.file
+    const newOrganisation = await request.json()
 
     // validate that user is allowed to change organisation
     try {
         const accessToken = readJWT(cookies.get('jwt'))
         const user = await getUserByUsername(accessToken.username)
         const oldOrganisation = await getOrganisation(newOrganisation._id || '')
-        if (newOrganisation._id !== oldOrganisation?._id?.toHexString() || newOrganisation._id !== user.organisation) {
+        if (newOrganisation._id !== oldOrganisation?._id?.toString() || newOrganisation._id !== user.organisation) {
             throw new Error('unauthorized')
         }
     } catch (error) {
@@ -34,9 +32,6 @@ export const POST: RequestHandler = async ({request, cookies}) => {
         return json({success: false, reason: 'user is unauthorized to modify this event'})
     }
 
-    newOrganisation.logo = fileObject ? await saveImageToDisk(fileObject, 'logos') : newOrganisation.logo
-
     const response = await updateOrganisation(newOrganisation)
-
     return json({status: response.acknowledged})
 }

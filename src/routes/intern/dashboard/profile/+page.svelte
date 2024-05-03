@@ -6,10 +6,10 @@
                 <div class="logo-container">
                     <img src="{data.organisation.logo}" alt="Vereinslogo">
                 </div>
-                <button on:click={() => showLogoUpload = !showLogoUpload}>Entfernen</button>
+                <button on:click={deleteLogo}>Entfernen</button>
             {/if}
             {#if showLogoUpload}
-                <input type="file" id="new-logo" bind:this={fileInput} bind:value={file}>
+                <input type="file" id="new-logo" on:change={handleImageUpdate}>
             {/if}
         </div>
 
@@ -39,17 +39,13 @@
 
     export let data
 
-    let showLogoUpload = false
-
     let newOrganisation: Organisation = data.organisation
-    let fileInput: HTMLInputElement
-    let file: any
+    let showLogoUpload = !newOrganisation.logo
 
     async function updateOrganisation() {
-        const fileObject = await readFile()
         const request = await fetch('/api/organisation', {
             method: 'POST',
-            body: JSON.stringify({organisation: newOrganisation, file: fileObject}),
+            body: JSON.stringify(newOrganisation),
             headers: {'Content-Type': 'application/json'}
         })
         const response = await request.json()
@@ -57,32 +53,45 @@
             document.location.href = '/intern/dashboard'
         } else {
             // TODO: handle error case where the update failed
+            console.error('error when updating organisation:', response.statusText)
         }
     }
 
-    async function readFile () {
-        //@ts-ignore
-        if (!fileInput || fileInput?.files.length === 0) return null
+    async function handleImageUpdate(event: any) {
+        const file = event?.target?.files[0]
+        if (!file) return
 
-        //@ts-ignore
-        const splitFileName = file.split('.')
-        const fileSuffix = splitFileName[splitFileName.length - 1]
+        const formData = new FormData()
+        formData.append('file', file)
+        formData.append('dir', 'logos')
 
-        const reader = new FileReader();
-
-        return new Promise((resolve, reject) => {
-            reader.onerror = () => {
-                reader.abort()
-                reject(new DOMException("Problem parsing input file."))
+        try {
+            const response = await fetch('/api/upload', { method: 'POST', body: formData })
+            if (response.ok) {
+                const result = await response.json()
+                newOrganisation.logo = result.url
+            } else {
+                console.error('Error uploading file:', response.statusText)
             }
+        } catch (error) {
+            console.error('Error uploading file:', error)
+        }
+    }
 
-            reader.onload = () => {
-                //@ts-ignore
-                resolve({ data: new Uint8Array(reader.result), suffix: fileSuffix })
+    async function deleteLogo() {
+        try {
+            const response = await fetch('/api/upload', {
+                method: 'DELETE',
+                body: JSON.stringify({path: newOrganisation.logo})
+            })
+            if (response.ok) {
+                newOrganisation.logo = ''
+                showLogoUpload = true
             }
-            //@ts-ignore
-            reader.readAsArrayBuffer(fileInput.files[0])
-        })
+        } catch (err) {
+            console.error(err)
+        }
+
     }
 
 </script>
