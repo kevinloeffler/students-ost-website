@@ -6,7 +6,9 @@
 
         <div>
             <div class="header">
-                <img class="logo" src="{verein.logo}" alt="Vereins Logo">
+                {#if verein.logo}
+                    <img class="logo" src="{verein.logo}" alt="Vereins Logo">
+                {/if}
 
                 <h1 class="page-title">{verein.name}</h1>
             </div>
@@ -44,7 +46,7 @@
     import Footer from "$lib/components/Footer.svelte";
 
     export let data
-    const verein: Verein = data.verein
+    const verein: Organisation = data.verein
 
 </script>
 

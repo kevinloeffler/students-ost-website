@@ -6,7 +6,9 @@
 
         <div>
             <div class="header">
-                <img class="logo" src="{fachschaft.logo}" alt="Fachschaft Logo">
+                {#if fachschaft.logo}
+                    <img class="logo" src="{fachschaft.logo}" alt="Fachschaft Logo">
+                {/if}
 
                 <h1 class="page-title">{fachschaft.name}</h1>
             </div>
