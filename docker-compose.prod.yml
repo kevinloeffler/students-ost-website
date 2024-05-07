@@ -17,6 +17,7 @@ services:
       DB_NAME: "${DB_NAME}"
       JWT_SECRET: "${JWT_SECRET}"
       AUTH_MAX_AGE: "${AUTH_MAX_AGE}"
+      BODY_SIZE_LIMIT: "10000000"
     depends_on:
       - db
 
