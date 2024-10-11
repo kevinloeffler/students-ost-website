@@ -15,5 +15,6 @@ EXPOSE 5173
 CMD ["npm", "run", "dev"]
 
 # for production
+# ENV ORIGIN http://localhost:3001
 # RUN npm run build
 # CMD ["node", "server"]
