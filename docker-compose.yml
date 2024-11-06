@@ -19,6 +19,7 @@ services:
       JWT_SECRET: "${JWT_SECRET}"
       AUTH_MAX_AGE: "${AUTH_MAX_AGE}"
       BODY_SIZE_LIMIT: "10000000"
+      CHOKIDAR_USEPOLLING: "true"
     depends_on:
       - db
 
@@ -33,4 +34,3 @@ services:
 
 volumes:
   mongo_db:
-
