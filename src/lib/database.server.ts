@@ -88,6 +88,11 @@ export async function getUserByUsername(username: string): Promise<User> {
     return user
 }
 
+export async function getAllUsers(): Promise<User[]> {
+    const users: User[] | undefined | null = await User.find({})
+    return users
+}
+
 
 /* EVENTS */
 
