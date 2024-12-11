@@ -11,9 +11,9 @@
 
         <div class="wrapper">
 
-            {#each data.fachschaften as fachschaft, index}
+            {#each data.fachschaften as fachschaft}
                 <div class="fachschaft-wrapper">
-                    <p>{String.fromCharCode((index % 24) + 65)}</p>
+                    <p>{fachschaft.name.replace(/Fachschaft/g, "").replace(/\s/g, "").charAt(0)}</p>
                     <a class="fachschaft-link" href="/fachschaften/{encodeURI(fachschaft.name)}">{fachschaft.name}</a>
                 </div>
             {/each}

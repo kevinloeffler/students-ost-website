@@ -11,9 +11,9 @@
 
         <div class="wrapper">
 
-            {#each data.vereine as verein, index}
+            {#each data.vereine as verein}
                 <div class="verein-wrapper">
-                    <p>{String.fromCharCode((index % 24) + 65)}</p>
+                    <p>{verein.name.replace(/\s/g, "").charAt(0)}</p>
                     <a class="verein-link" href="/vereine/{encodeURI(verein.name)}">{verein.name}</a>
                 </div>
             {/each}
