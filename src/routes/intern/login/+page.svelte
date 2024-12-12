@@ -19,7 +19,7 @@
             {#if !form?.loggedIn && form?.reason}
                 <div class="login-error-wrapper">
                     <p>Login fehlgeschlagen:</p>
-                    <p>Flasche login-informationen</p>
+                    <p>Falsche login-informationen</p>
                 </div>
             {/if}
         </div>
