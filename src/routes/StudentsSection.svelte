@@ -1,7 +1,6 @@
 <section class="students-students default-section">
     <div class="students-container default-container">
         <h2>Verein der Studierenden</h2>
-        <p class="text">Einen kurzen beschrieb wer wir sind und was wir so machen. Einen kurzen beschrieb wer wir sind und was wir machen. Einen kurzen beschrieb wer wir sind und was wir machen.</p>
         <button class="default-button">Kennenlernen</button>
         <img src="/images/students-grid-2.svg" alt="Ein graues Raster mit blauen Formen">
     </div>

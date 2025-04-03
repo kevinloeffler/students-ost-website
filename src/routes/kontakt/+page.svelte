@@ -13,15 +13,15 @@
 
             <div class="position position-1">
                 <p class="role">Präsident</p>
-                <h3>Raphael</h3>
+                <h3>Raphael Steinegger</h3>
             </div>
             <div class="position position-2">
                 <p class="role">Vize</p>
-                <h3>Nicolas</h3>
+                <h3>Nicolas Müller</h3>
             </div>
             <div class="position position-3">
                 <p class="role">Finanzier</p>
-                <h3>Lucas</h3>
+                <h3>Lucas Gross</h3>
             </div>
             <div class="position position-4">
                 <p class="role">Aktuar</p>
@@ -29,7 +29,7 @@
             </div>
             <div class="position position-5">
                 <p class="role">IT</p>
-                <h3>Nico</h3>
+                <h3>Nico Tuscano</h3>
             </div>
             <div class="position position-6">
                 <p class="role">Co-Eventhead</p>
@@ -45,7 +45,7 @@
             </div>
             <div class="position position-9">
                 <p class="role">Vertretung VS-OST</p>
-                <h3>Nicolas</h3>
+                <h3>Nicolas Müller</h3>
             </div>
             <div class="position position-10">
                 <p class="role">Vertretung Untervereine</p>
