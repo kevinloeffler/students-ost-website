@@ -16,40 +16,36 @@
                 <h3>Raphael Steinegger</h3>
             </div>
             <div class="position position-2">
-                <p class="role">Vize</p>
-                <h3>Nicolas Müller</h3>
+                <p class="role">Stv. Präsidentin</p>
+                <h3>Alessia Pagani</h3>
             </div>
             <div class="position position-3">
-                <p class="role">Finanzier</p>
-                <h3>Lucas Gross</h3>
+                <p class="role">Finanzvorstand</p>
+                <h3>Marcel Jaensch</h3>
             </div>
             <div class="position position-4">
                 <p class="role">Aktuar</p>
-                <h3>Vakant</h3>
+                <h3>Ramon Fäh</h3>
             </div>
             <div class="position position-5">
                 <p class="role">IT</p>
                 <h3>Nico Tuscano</h3>
             </div>
             <div class="position position-6">
-                <p class="role">Co-Eventhead</p>
-                <h3>Vakant</h3>
+                <p class="role">Eventhead</p>
+                <h3>Cedric Helbling</h3>
             </div>
             <div class="position position-7">
                 <p class="role">Co-Eventhead</p>
-                <h3>Vakant</h3>
+                <h3>Philipp Kuster</h3>
             </div>
             <div class="position position-8">
-                <p class="role">Technik</p>
-                <h3>Vakant</h3>
+                <p class="role">Support</p>
+                <h3>Carl Vieli</h3>
             </div>
             <div class="position position-9">
-                <p class="role">Vertretung VS-OST</p>
-                <h3>Nicolas Müller</h3>
-            </div>
-            <div class="position position-10">
-                <p class="role">Vertretung Untervereine</p>
-                <h3>Vakant</h3>
+                <p class="role">Logistik</p>
+                <h3>Armando Hüppi</h3>
             </div>
 
             <a href="mailto:students-rj@ost.ch">
