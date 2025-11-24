@@ -28,9 +28,9 @@
 }
 
 @font-face {
-    font-family: "Radwave";
-    src: url("./fonts/radwave-regular.woff2");
-    font-weight: normal;
+    font-family: "Jumbox";
+    src: url("./fonts/JumboxBold-3z0PM.ttf");
+    font-weight: 200;
 }
 
 /* region: CSS reset, courtesy of joshwcomeau.com/css/custom-css-reset/ */
@@ -71,7 +71,7 @@ body {
 .default-button {
     color: white;
     background-color: var(--accent-color);
-    font-family: "Radwave", sans-serif;
+    font-family: "Jumbox", sans-serif;
     font-size: 12pt;
     padding: 12px 18px 8px;
     outline: none;
@@ -90,7 +90,7 @@ body {
 }
 
 .page-title {
-    font-family: "Radwave", sans-serif;
+    font-family: "Jumbox", sans-serif;
     font-size: 40pt;
     line-height: 1;
 }
