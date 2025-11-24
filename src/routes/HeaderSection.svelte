@@ -51,7 +51,7 @@
     }
 
     h1 {
-        font-family: "Radwave", sans-serif;
+        font-family: "Jumbox", sans-serif;
         font-size: 45pt;
         line-height: 1em;
         color: var(--accent-color);
@@ -92,7 +92,7 @@
         color: white;
         background-color: var(--accent-color);
 
-        font-family: "Radwave", sans-serif;
+        font-family: "Jumbox", sans-serif;
         line-height: 1.2;
 
         padding: 28px 32px;

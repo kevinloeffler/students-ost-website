@@ -36,12 +36,12 @@
 <style>
 
     h1 {
-        font-family: "Radwave", sans-serif;
+        font-family: "Jumbox", sans-serif;
         font-size: 40px;
     }
 
     h2 {
-        font-family: "Radwave", sans-serif;
+        font-family: "Jumbox", sans-serif;
         font-size: 32px;
         margin-top: 20px;
     }

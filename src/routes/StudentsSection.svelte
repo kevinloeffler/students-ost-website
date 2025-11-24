@@ -14,7 +14,7 @@
     }
 
     h2 {
-        font-family: "Radwave", sans-serif;
+        font-family: "Jumbox", sans-serif;
         font-size: 30pt;
         line-height: 1em;
         padding-bottom: 8px;

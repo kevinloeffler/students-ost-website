@@ -43,7 +43,7 @@
 <style>
 
     .menu-button {
-        font-family: "Radwave", sans-serif;
+        font-family: "Jumbox", sans-serif;
         color: var(--accent-color);
         background: none;
 
@@ -96,7 +96,7 @@
         color: white;
         background-color: var(--accent-color);
 
-        font-family: "Radwave", sans-serif;
+        font-family: "Jumbox", sans-serif;
         font-size: min(7vw, 5vh);
         line-height: 1em;
         padding-left: 3%;

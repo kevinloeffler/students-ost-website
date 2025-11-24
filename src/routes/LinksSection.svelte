@@ -64,7 +64,7 @@
 
     .link-wrapper {
         position: relative;
-        font-family: "Radwave", sans-serif;
+        font-family: "Jumbox", sans-serif;
         border: var(--default-border);
         height: 100%;
         background-color: white;

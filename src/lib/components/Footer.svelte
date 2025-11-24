@@ -49,7 +49,7 @@
     }
 
     .footer-title {
-        font-family: "Radwave", sans-serif;
+        font-family: "Jumbox", sans-serif;
     }
 
     /***** MOBILE *****/

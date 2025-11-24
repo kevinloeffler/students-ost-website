@@ -76,14 +76,14 @@
 <style>
 
     h1 {
-        font-family: "Radwave", sans-serif;
+        font-family: "Jumbox", sans-serif;
         font-size: 60px;
         text-align: center;
         margin-top: 40px;
     }
 
     h2 {
-        font-family: "Radwave", sans-serif;
+        font-family: "Jumbox", sans-serif;
         font-size: 40px;
         text-align: center;
         margin-top: 80px;
@@ -112,7 +112,7 @@
     }
 
     .position > h3 {
-        font-family: "Radwave", sans-serif;
+        font-family: "Jumbox", sans-serif;
         font-size: 24px;
     }
 

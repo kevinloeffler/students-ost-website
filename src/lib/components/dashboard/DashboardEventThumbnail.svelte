@@ -55,7 +55,7 @@
         width: 100%;
         padding-left: 28px;
 
-        font-family: "Radwave", sans-serif;
+        font-family: "Jumbox", sans-serif;
         line-height: 1.1;
     }
 

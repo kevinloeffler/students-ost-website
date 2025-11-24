@@ -29,7 +29,7 @@
         display: block;
         border: var(--default-border);
         color: var(--accent-color);
-        font-family: "Radwave", sans-serif;
+        font-family: "Jumbox", sans-serif;
         line-height: 1;
         margin-bottom: 20px;
         transition-duration: 300ms;

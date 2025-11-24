@@ -73,7 +73,7 @@
     }
 
     h1 {
-        font-family: "Radwave", sans-serif;
+        font-family: "Jumbox", sans-serif;
         font-size: 28px;
     }
 

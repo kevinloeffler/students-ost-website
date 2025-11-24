@@ -99,7 +99,7 @@
     }
 
     h1 {
-        font-family: "Radwave", sans-serif;
+        font-family: "Jumbox", sans-serif;
         font-size: 40px;
         margin-bottom: 20px;
     }
@@ -189,7 +189,7 @@
     }
 
     .help-title {
-        font-family: "Radwave", sans-serif;
+        font-family: "Jumbox", sans-serif;
         font-size: 32px;
         text-align: center;
         margin-bottom: 12px;
