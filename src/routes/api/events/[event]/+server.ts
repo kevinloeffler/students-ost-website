@@ -19,11 +19,7 @@ export const POST: RequestHandler = async ({ cookies, request}): Promise<Respons
 
     // validate that user is allowed to change this event
     try {
-        const accessToken = readJWT(cookies.get('jwt'))
-        const user = await getUserByUsername(accessToken.username)
-        const oldOstEvent = await getOstEvent(ostEvent.name)
-        if (ostEvent.organiserId !== oldOstEvent?.organiserId) throw new Error('unauthorized')
-        if (user.organisation !== ostEvent.organiserId) throw new Error('unauthorized')
+        await checkAuth(cookies, ostEvent.organiserId)
     } catch (error) {
         console.log(error)
         return json({success: false, reason: 'user is unauthorized to modify this event'})
@@ -38,9 +34,7 @@ export const DELETE: RequestHandler = async ({params, cookies}): Promise<Respons
     const ostEvent = await getOstEvent(id)
 
     try {
-        const accessToken = readJWT(cookies.get('jwt'))
-        const user = await getUserByUsername(accessToken.username)
-        if (user.organisation !== ostEvent?.organiserId) throw new Error('unauthorized')
+        await checkAuth(cookies, ostEvent?.organiserId)
     } catch (error) {
         console.error(error)
         return json({success: false, reason: 'user is unauthorized to modify this event'})
@@ -51,4 +45,13 @@ export const DELETE: RequestHandler = async ({params, cookies}): Promise<Respons
 
     const response = await deleteOstEvent(id)
     return json({status: response.acknowledged, deleteCount: response.deleteCount})
+}
+
+async function checkAuth(cookies: any, organiserId?: string) {
+    const accessToken = readJWT(cookies.get('jwt'))
+    const user = await getUserByUsername(accessToken.username)
+    if (!organiserId || user.organisation !== organiserId) {
+        throw new Error('unauthorized')
+    }
+    return user
 }
